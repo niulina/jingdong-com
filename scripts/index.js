@@ -1,3 +1,4 @@
+// 左侧导航栏
 $(function(){
 	$(".dd-inner").children(".item").hover(function(){
 		$(this).addClass("hover").siblings(".item").removeClass("hover");
@@ -20,6 +21,7 @@ $(function(){
 		$(".dd-inner").children(".item").removeClass("hover");
 	});
 });
+//中心图片轮播
 $(function(){
 	var i = 0;
 	var t = setInterval(move,4000);
@@ -40,7 +42,7 @@ $(function(){
 	},function(){
 		t = setInterval(move,4000);
 	});
-	$(".slider-panel a,.slider-page a").hover(function(){
+	$("#focus .slider-panel a,#focus .slider-page a").hover(function(){
 		clearInterval(t);
 		$(".slider-extra .slider-page").show();
 	},function(){
@@ -56,8 +58,9 @@ $(function(){
 		i++;
 		sliderMainOperate(i);
 	});
-})
-$(function(){
+});
+//今日推荐
+$("#todays").ready(function(){
 	var date = new Date();
 	var hours = date.getHours();
 	hours = hours>12?hours-12:hours;
@@ -93,285 +96,285 @@ $(function(){
 	});
 });
 //clothes
-// $(function(){
-// 	var $clothes_slider_main = $("#clothes .slider-main");
-// 	var slider_left = $clothes_slider_main.position().left;
-// 	var $clothes_slider_nav = $("#clothes .slider-nav li");
-// 	var $clothes_slider_page = $("#clothes .slider-page");
-// 	var clothes_now = 0;
-// 	var clothes_slider = setInterval(slider_next,3000);
+$("#clothes").ready(function(){
+	var $clothes_slider_main = $("#clothes .slider-main");
+	var slider_left = $clothes_slider_main.position().left;
+	var $clothes_slider_nav = $("#clothes .slider-nav li");
+	var $clothes_slider_page = $("#clothes .slider-page");
+	var clothes_now = 0;
+	var clothes_slider = setInterval(slider_next,3000);
 
-// 	function slider_next(){
-// 		clothes_now = (++clothes_now)%4;
-// 		slider_left = slider_left-439; 
-// 		$clothes_slider_main.animate({left:slider_left},700);
-// 		if(slider_left <= -2195){
-// 			slider_left = -439;
-// 			clothes_now = 0;
-// 			$clothes_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$clothes_slider_nav.eq(clothes_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	function slider_prev(){
-// 		clothes_now = (--clothes_now)%4;
-// 		slider_left = slider_left+439; 
-// 		$clothes_slider_main.animate({left:slider_left},700);
-// 		if(slider_left >= 0){
-// 			slider_left = -1756;
-// 			clothes_now = 3;
-// 			$clothes_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$clothes_slider_nav.eq(clothes_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	$("#clothes .slider a").hover(function(){
-// 		$clothes_slider_page.show();
-// 		clearInterval(clothes_slider);
-// 	},function(){
-// 		$clothes_slider_page.hide();
-// 		clothes_slider = setInterval(slider_next,3000);
-// 	});
-// 	$clothes_slider_nav.hover(function(){
-// 		var index = $(this).index();
-// 		clothes_now = index;
-// 		clearInterval(clothes_slider);
-// 		slider_left = (clothes_now+1)*(-439);
-// 		$clothes_slider_main.animate({left:slider_left},400);
-// 		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	},function(){
-// 		clothes_slider = setInterval(slider_next,3000);
-// 	});
-// 	$clothes_slider_page.find(".slider-prev").click(function(){
-// 		slider_prev();
-// 	});
-// 	$clothes_slider_page.find(".slider-next").click(function(){
-// 		slider_next();
-// 	});
-// 	$("#clothes .tab li").click(function(){
-// 		var index = $(this).index();
-// 		if (index!=0){
-// 			clearInterval(clothes_slider);
-// 		}
-// 		else{
-// 			clothes_slider = setInterval(slider_next,3000);
-// 		}
-// 		$("#clothes .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
-// 		$("#clothes .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
-// 	});
-// });
-// //cosmetics
-// $(function(){
-// 	var $cosmetics_slider_main = $("#cosmetics .slider-main");
-// 	var slider_left = $cosmetics_slider_main.position().left;
-// 	var $cosmetics_slider_nav = $("#cosmetics .slider-nav li");
-// 	var $cosmetics_slider_page = $("#cosmetics .slider-page");
-// 	var cosmetics_now = 0;
-// 	var cosmetics_slider = setInterval(slider_next,3000);
+	function slider_next(){
+		clothes_now = (++clothes_now)%4;
+		slider_left = slider_left-439; 
+		$clothes_slider_main.animate({left:slider_left},700);
+		if(slider_left <= -2195){
+			slider_left = -439;
+			clothes_now = 0;
+			$clothes_slider_main.animate({left:slider_left},0);
+		}
+		$clothes_slider_nav.eq(clothes_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	function slider_prev(){
+		clothes_now = (--clothes_now)%4;
+		slider_left = slider_left+439; 
+		$clothes_slider_main.animate({left:slider_left},700);
+		if(slider_left >= 0){
+			slider_left = -1756;
+			clothes_now = 3;
+			$clothes_slider_main.animate({left:slider_left},0);
+		}
+		$clothes_slider_nav.eq(clothes_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	$("#clothes .slider a").hover(function(){
+		$clothes_slider_page.show();
+		clearInterval(clothes_slider);
+	},function(){
+		$clothes_slider_page.hide();
+		clothes_slider = setInterval(slider_next,3000);
+	});
+	$clothes_slider_nav.hover(function(){
+		var index = $(this).index();
+		clothes_now = index;
+		clearInterval(clothes_slider);
+		slider_left = (clothes_now+1)*(-439);
+		$clothes_slider_main.animate({left:slider_left},400);
+		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
+	},function(){
+		clothes_slider = setInterval(slider_next,3000);
+	});
+	$clothes_slider_page.find(".slider-prev").click(function(){
+		slider_prev();
+	});
+	$clothes_slider_page.find(".slider-next").click(function(){
+		slider_next();
+	});
+	$("#clothes .tab li").click(function(){
+		var index = $(this).index();
+		if (index!=0){
+			clearInterval(clothes_slider);
+		}
+		else{
+			clothes_slider = setInterval(slider_next,3000);
+		}
+		$("#clothes .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
+		$("#clothes .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
+	});
+});
+//cosmetics
+$("#cosmetics").ready(function(){
+	var $cosmetics_slider_main = $("#cosmetics .slider-main");
+	var slider_left = $cosmetics_slider_main.position().left;
+	var $cosmetics_slider_nav = $("#cosmetics .slider-nav li");
+	var $cosmetics_slider_page = $("#cosmetics .slider-page");
+	var cosmetics_now = 0;
+	var cosmetics_slider = setInterval(slider_next,3000);
 
-// 	function slider_next(){
-// 		cosmetics_now = (++cosmetics_now)%4;
-// 		slider_left = slider_left-339; 
-// 		$cosmetics_slider_main.animate({left:slider_left},700);
-// 		if(slider_left <= -1695){
-// 			slider_left = -339;
-// 			cosmetics_now = 0;
-// 			$cosmetics_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$cosmetics_slider_nav.eq(cosmetics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	function slider_prev(){
-// 		cosmetics_now = (--cosmetics_now)%4;
-// 		slider_left = slider_left+339; 
-// 		$cosmetics_slider_main.animate({left:slider_left},700);
-// 		if(slider_left >= 0){
-// 			slider_left = -1356;
-// 			cosmetics_now = 3;
-// 			$cosmetics_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$cosmetics_slider_nav.eq(cosmetics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	$("#cosmetics .slider a").hover(function(){
-// 		$cosmetics_slider_page.show();
-// 		clearInterval(cosmetics_slider);
-// 	},function(){
-// 		$cosmetics_slider_page.hide();
-// 		cosmetics_slider = setInterval(slider_next,3000);
-// 	});
-// 	$cosmetics_slider_nav.hover(function(){
-// 		var index = $(this).index();
-// 		cosmetics_now = index;
-// 		slider_left = (cosmetics_now+1)*(-339);
-// 		$cosmetics_slider_main.animate({left:slider_left},400);
-// 		clearInterval(cosmetics_slider);
-// 		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	},function(){
-// 		cosmetics_slider = setInterval(slider_next,3000);
-// 	});
-// 	$cosmetics_slider_page.find(".slider-prev").click(function(){
-// 		slider_prev();
-// 	});
-// 	$cosmetics_slider_page.find(".slider-next").click(function(){
-// 		slider_next();
-// 	});
-// 	$("#cosmetics .tab li").click(function(){
-// 		var index = $(this).index();
-// 		if (index!=0){
-// 			clearInterval(cosmetics_slider);
-// 		}
-// 		else{
-// 			cosmetics_slider = setInterval(slider_next,3000);
-// 		}
-// 		$("#cosmetics .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
-// 		$("#cosmetics .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
-// 	});
-// });
+	function slider_next(){
+		cosmetics_now = (++cosmetics_now)%4;
+		slider_left = slider_left-339; 
+		$cosmetics_slider_main.animate({left:slider_left},700);
+		if(slider_left <= -1695){
+			slider_left = -339;
+			cosmetics_now = 0;
+			$cosmetics_slider_main.animate({left:slider_left},0);
+		}
+		$cosmetics_slider_nav.eq(cosmetics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	function slider_prev(){
+		cosmetics_now = (--cosmetics_now)%4;
+		slider_left = slider_left+339; 
+		$cosmetics_slider_main.animate({left:slider_left},700);
+		if(slider_left >= 0){
+			slider_left = -1356;
+			cosmetics_now = 3;
+			$cosmetics_slider_main.animate({left:slider_left},0);
+		}
+		$cosmetics_slider_nav.eq(cosmetics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	$("#cosmetics .slider a").hover(function(){
+		$cosmetics_slider_page.show();
+		clearInterval(cosmetics_slider);
+	},function(){
+		$cosmetics_slider_page.hide();
+		cosmetics_slider = setInterval(slider_next,3000);
+	});
+	$cosmetics_slider_nav.hover(function(){
+		var index = $(this).index();
+		cosmetics_now = index;
+		slider_left = (cosmetics_now+1)*(-339);
+		$cosmetics_slider_main.animate({left:slider_left},400);
+		clearInterval(cosmetics_slider);
+		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
+	},function(){
+		cosmetics_slider = setInterval(slider_next,3000);
+	});
+	$cosmetics_slider_page.find(".slider-prev").click(function(){
+		slider_prev();
+	});
+	$cosmetics_slider_page.find(".slider-next").click(function(){
+		slider_next();
+	});
+	$("#cosmetics .tab li").click(function(){
+		var index = $(this).index();
+		if (index!=0){
+			clearInterval(cosmetics_slider);
+		}
+		else{
+			cosmetics_slider = setInterval(slider_next,3000);
+		}
+		$("#cosmetics .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
+		$("#cosmetics .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
+	});
+});
 //mobiles
-// $(function(){
-// 	var $mobiles_slider_main = $("#mobiles .slider-main");
-// 	var slider_left = $mobiles_slider_main.position().left;
-// 	var $mobiles_slider_nav = $("#mobiles .slider-nav li");
-// 	var $mobiles_slider_page = $("#mobiles .slider-page");
-// 	var mobiles_now = 0;
-// 	var mobiles_slider = setInterval(slider_next,3000);
+$("#mobiles").ready(function(){
+	var $mobiles_slider_main = $("#mobiles .slider-main");
+	var slider_left = $mobiles_slider_main.position().left;
+	var $mobiles_slider_nav = $("#mobiles .slider-nav li");
+	var $mobiles_slider_page = $("#mobiles .slider-page");
+	var mobiles_now = 0;
+	var mobiles_slider = setInterval(slider_next,3000);
 
-// 	function slider_next(){
-// 		mobiles_now = (++mobiles_now)%4;
-// 		slider_left = slider_left-439; 
-// 		$mobiles_slider_main.animate({left:slider_left},700);
-// 		if(slider_left <= -2195){
-// 			slider_left = -439;
-// 			mobiles_now = 0;
-// 			$mobiles_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$mobiles_slider_nav.eq(mobiles_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	function slider_prev(){
-// 		mobiles_now = (--mobiles_now)%4;
-// 		slider_left = slider_left+439; 
-// 		$mobiles_slider_main.animate({left:slider_left},700);
-// 		if(slider_left >= 0){
-// 			slider_left = -1756;
-// 			mobiles_now = 3;
-// 			$mobiles_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$mobiles_slider_nav.eq(mobiles_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	$("#mobiles .slider a").hover(function(){
-// 		$mobiles_slider_page.show();
-// 		clearInterval(mobiles_slider);
-// 	},function(){
-// 		$mobiles_slider_page.hide();
-// 		mobiles_slider = setInterval(slider_next,3000);
-// 	});
-// 	$mobiles_slider_nav.hover(function(){
-// 		var index = $(this).index();
-// 		mobiles_now = index;
-// 		clearInterval(mobiles_slider);
-// 		slider_left = (mobiles_now+1)*(-439);
-// 		$mobiles_slider_main.animate({left:slider_left},400);
-// 		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	},function(){
-// 		mobiles_slider = setInterval(slider_next,3000);
-// 	});
-// 	$mobiles_slider_page.find(".slider-prev").click(function(){
-// 		slider_prev();
-// 	});
-// 	$mobiles_slider_page.find(".slider-next").click(function(){
-// 		slider_next();
-// 	});
-// 	$("#mobiles .tab li").click(function(){
-// 		var index = $(this).index();
-// 		if (index!=0){
-// 			clearInterval(mobiles_slider);
-// 		}
-// 		else{
-// 			mobiles_slider = setInterval(slider_next,3000);
-// 		}
-// 		$("#mobiles .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
-// 		$("#mobiles .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
-// 	});
-// });
-//electronics
-// $(function(){
-// 	var $electronics_slider_main = $("#electronics .slider-main");
-// 	var slider_left = $electronics_slider_main.position().left;
-// 	var $electronics_slider_nav = $("#electronics .slider-nav li");
-// 	var $electronics_slider_page = $("#electronics .slider-page");
-// 	var electronics_now = 0;
-// 	var electronics_slider = setInterval(slider_next,3000);
+	function slider_next(){
+		mobiles_now = (++mobiles_now)%4;
+		slider_left = slider_left-439; 
+		$mobiles_slider_main.animate({left:slider_left},700);
+		if(slider_left <= -2195){
+			slider_left = -439;
+			mobiles_now = 0;
+			$mobiles_slider_main.animate({left:slider_left},0);
+		}
+		$mobiles_slider_nav.eq(mobiles_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	function slider_prev(){
+		mobiles_now = (--mobiles_now)%4;
+		slider_left = slider_left+439; 
+		$mobiles_slider_main.animate({left:slider_left},700);
+		if(slider_left >= 0){
+			slider_left = -1756;
+			mobiles_now = 3;
+			$mobiles_slider_main.animate({left:slider_left},0);
+		}
+		$mobiles_slider_nav.eq(mobiles_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	$("#mobiles .slider a").hover(function(){
+		$mobiles_slider_page.show();
+		clearInterval(mobiles_slider);
+	},function(){
+		$mobiles_slider_page.hide();
+		mobiles_slider = setInterval(slider_next,3000);
+	});
+	$mobiles_slider_nav.hover(function(){
+		var index = $(this).index();
+		mobiles_now = index;
+		clearInterval(mobiles_slider);
+		slider_left = (mobiles_now+1)*(-439);
+		$mobiles_slider_main.animate({left:slider_left},400);
+		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
+	},function(){
+		mobiles_slider = setInterval(slider_next,3000);
+	});
+	$mobiles_slider_page.find(".slider-prev").click(function(){
+		slider_prev();
+	});
+	$mobiles_slider_page.find(".slider-next").click(function(){
+		slider_next();
+	});
+	$("#mobiles .tab li").click(function(){
+		var index = $(this).index();
+		if (index!=0){
+			clearInterval(mobiles_slider);
+		}
+		else{
+			mobiles_slider = setInterval(slider_next,3000);
+		}
+		$("#mobiles .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
+		$("#mobiles .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
+	});
+});
+$("#electronics").ready(function(){
+	var $electronics_slider_main = $("#electronics .slider-main");
+	var slider_left = $electronics_slider_main.position().left;
+	var $electronics_slider_nav = $("#electronics .slider-nav li");
+	var $electronics_slider_page = $("#electronics .slider-page");
+	var electronics_now = 0;
+	var electronics_slider = setInterval(slider_next,3000);
 
-// 	function slider_next(){
-// 		electronics_now = (++electronics_now)%4;
-// 		slider_left = slider_left-439; 
-// 		$electronics_slider_main.animate({left:slider_left},700);
-// 		if(slider_left <= -2195){
-// 			slider_left = -439;
-// 			electronics_now = 0;
-// 			$electronics_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$electronics_slider_nav.eq(electronics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	function slider_prev(){
-// 		electronics_now = (--electronics_now)%4;
-// 		slider_left = slider_left+439; 
-// 		$electronics_slider_main.animate({left:slider_left},700);
-// 		if(slider_left >= 0){
-// 			slider_left = -1756;
-// 			electronics_now = 3;
-// 			$electronics_slider_main.animate({left:slider_left},0);
-// 		}
-// 		$electronics_slider_nav.eq(electronics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	}
-// 	$("#electronics .slider a").hover(function(){
-// 		$electronics_slider_page.show();
-// 		clearInterval(electronics_slider);
-// 	},function(){
-// 		$electronics_slider_page.hide();
-// 		electronics_slider = setInterval(slider_next,3000);
-// 	});
-// 	$electronics_slider_nav.hover(function(){
-// 		var index = $(this).index();
-// 		electronics_now = index;
-// 		clearInterval(electronics_slider);
-// 		slider_left = (electronics_now+1)*(-439);
-// 		$electronics_slider_main.animate({left:slider_left},400);
-// 		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
-// 	},function(){
-// 		electronics_slider = setInterval(slider_next,3000);
-// 	});
-// 	$electronics_slider_page.find(".slider-prev").click(function(){
-// 		slider_prev();
-// 	});
-// 	$electronics_slider_page.find(".slider-next").click(function(){
-// 		slider_next();
-// 	});
-// 	$("#electronics .tab li").click(function(){
-// 		var index = $(this).index();
-// 		if (index!=0){
-// 			clearInterval(electronics_slider);
-// 		}
-// 		else{
-// 			electronics_slider = setInterval(slider_next,3000);
-// 		}
-// 		$("#electronics .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
-// 		$("#electronics .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
-// 	});
-// });
-// $(function(){
-// 	var $share_slider_main = $("#share .sw ul");
-// 	var share_now = 0;
-// 	var slider_top = $share_slider_main.position().top;
-// 	var share_slider = setInterval(slider_next,3000);
-// 	function slider_next(){
-// 		share_now = (++share_now)%3;
-// 		slider_top = slider_top+120; 
-// 		$share_slider_main.animate({top:slider_top},700);
-// 		if(slider_top >= 0){
-// 			slider_top = -360;
-// 			share_now = 2;
-// 			$share_slider_main.animate({top:slider_top},0);
-// 		}
-// 	}
-// });
+	function slider_next(){
+		electronics_now = (++electronics_now)%4;
+		slider_left = slider_left-439; 
+		$electronics_slider_main.animate({left:slider_left},700);
+		if(slider_left <= -2195){
+			slider_left = -439;
+			electronics_now = 0;
+			$electronics_slider_main.animate({left:slider_left},0);
+		}
+		$electronics_slider_nav.eq(electronics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	function slider_prev(){
+		electronics_now = (--electronics_now)%4;
+		slider_left = slider_left+439; 
+		$electronics_slider_main.animate({left:slider_left},700);
+		if(slider_left >= 0){
+			slider_left = -1756;
+			electronics_now = 3;
+			$electronics_slider_main.animate({left:slider_left},0);
+		}
+		$electronics_slider_nav.eq(electronics_now).addClass("slider-selected").siblings().removeClass("slider-selected");
+	}
+	$("#electronics .slider a").hover(function(){
+		$electronics_slider_page.show();
+		clearInterval(electronics_slider);
+	},function(){
+		$electronics_slider_page.hide();
+		electronics_slider = setInterval(slider_next,3000);
+	});
+	$electronics_slider_nav.hover(function(){
+		var index = $(this).index();
+		electronics_now = index;
+		clearInterval(electronics_slider);
+		slider_left = (electronics_now+1)*(-439);
+		$electronics_slider_main.animate({left:slider_left},400);
+		$(this).addClass("slider-selected").siblings().removeClass("slider-selected");
+	},function(){
+		electronics_slider = setInterval(slider_next,3000);
+	});
+	$electronics_slider_page.find(".slider-prev").click(function(){
+		slider_prev();
+	});
+	$electronics_slider_page.find(".slider-next").click(function(){
+		slider_next();
+	});
+	$("#electronics .tab li").click(function(){
+		var index = $(this).index();
+		if (index!=0){
+			clearInterval(electronics_slider);
+		}
+		else{
+			electronics_slider = setInterval(slider_next,3000);
+		}
+		$("#electronics .tab li").eq(index).addClass("tab-selected").siblings().removeClass("tab-selected");
+		$("#electronics .mc .main").eq(index).addClass("main-selected").siblings().removeClass("main-selected");
+	});
+});
+//share
+$("#share").ready(function(){
+	var $share_slider_main = $("#share .sw ul");
+	var share_now = 0;
+	var slider_top = $share_slider_main.position().top;
+	var share_slider = setInterval(slider_next,3000);
+	function slider_next(){
+		share_now = (++share_now)%3;
+		slider_top = slider_top+120; 
+		$share_slider_main.animate({top:slider_top},700);
+		if(slider_top >= 0){
+			slider_top = -360;
+			share_now = 2;
+			$share_slider_main.animate({top:slider_top},0);
+		}
+	}
+});
 // elevator
 $(function(){
 	var $elevator = $("#elevator");
@@ -412,6 +415,7 @@ $(function(){
         }
 	});
 });
+//右侧工具栏
 $(function(){
 	$("#J-global-toolbar .jdm-toolbar  .tab").hover(function(){
 		$(this).addClass("hover").siblings().removeClass("hover");
